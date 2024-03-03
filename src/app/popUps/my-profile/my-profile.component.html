@@ -1,0 +1,140 @@
+<div class="main-container flex center-center column message-bg border-double">
+    <div class="flex center-center cursor">
+        <span class="material-symbols-outlined full-height font-size">person</span>
+        <h1 class="text-center">Profile of {{myProfileDetails[0].firstName}} {{myProfileDetails[0].lastName}}</h1>
+    </div>
+
+    <div class="flex spaceBetween-center gap-1em">
+        <div>
+            <h4>Initial number of Annual leaves: {{ myProfileDetails[0].annualLeaves}}</h4>
+        </div>
+        <div>
+            <h4>Initial number of Sick leaves: {{ myProfileDetails[0].sickLeaves}}</h4>
+        </div>
+        <div>
+            <h4>Initial number of Family leaves: {{ myProfileDetails[0].familyLeaves}}</h4>
+        </div>
+    </div>
+    <div class="flex">
+        <div class="left width-60">
+            <form class="example-form flex center-center gap-1em wrap padding-15px" #myProfile="ngForm">
+
+                <div class="flex gap-1em">
+                    <!-- Title -->
+                    <mat-form-field class="example-full-width width-300px">
+                        <mat-label>First Name :</mat-label>
+                        <input type="text" matInput [(ngModel)]="myProfileDetails[0].firstName" name="title" disabled>
+
+                    </mat-form-field>
+                    <!-- content -->
+                    <mat-form-field class="example-full-width width-300px">
+                        <mat-label>Last Name :</mat-label>
+                        <input type="text" matInput [(ngModel)]="myProfileDetails[0].lastName" name="content" disabled>
+
+                    </mat-form-field>
+                </div>
+                <!-- procedures -->
+                <mat-form-field class="example-full-width width-300px">
+                    <mat-label>Email address</mat-label>
+                    <input type="text" matInput [(ngModel)]="myProfileDetails[0].email" name="procedures" disabled>
+
+                </mat-form-field>
+
+                <!-- Category -->
+
+                <mat-form-field class="example-full-width width-300px">
+                    <mat-label>Gender</mat-label>
+                    <input type="text" matInput [(ngModel)]="myProfileDetails[0].gender" name="gender" disabled>
+                </mat-form-field>
+
+                <!-- link -->
+
+                <mat-form-field class="example-full-width width-300px">
+                    <mat-label>Role</mat-label>
+                    <input type="text" matInput [(ngModel)]="myProfileDetails[0].role" name="role" disabled>
+
+                </mat-form-field>
+
+
+                <mat-form-field class="example-full-width width-300px">
+                    <mat-label>identity Number : </mat-label>
+                    <input type="text" matInput [(ngModel)]="myProfileDetails[0].identityNO" name="idNO" disabled>
+
+                </mat-form-field>
+
+                <mat-form-field class="example-full-width width-300px">
+                    <mat-label>Contact:</mat-label>
+                    <input type="text" matInput [(ngModel)]="myProfileDetails[0].contact" name="contact" disabled>
+
+                </mat-form-field>
+
+                <mat-form-field class="example-full-width width-300px">
+                    <mat-label>Department :</mat-label>
+                    <input type="text" matInput [(ngModel)]="myProfileDetails[0].department" name="department" disabled>
+
+                </mat-form-field>
+
+            </form>
+        </div>
+        <div class="right width-25 flex column gap-1em margin-top-15">
+            <div class="width-750px">
+                <mat-accordion class="example-headers-align height-100px width-750px" multi>
+                    <mat-expansion-panel>
+                        <div class="flex column center-center">
+                            <mat-form-field class="example-full-width width-300px margin-top-15">
+                                <mat-label>Old Password :</mat-label>
+                                <input type="password" matInput [(ngModel)]="changing.oldPassword" name="oldPassword"
+                                    [type]="hide ? 'password' : 'text'" required>
+                                <button mat-icon-button matSuffix (click)="hide = !hide"
+                                    [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+                                    <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+                                </button>
+                            </mat-form-field>
+
+                            <mat-form-field class="example-full-width width-300px">
+                                <mat-label>New Password :</mat-label>
+                                <input type="password" matInput [(ngModel)]="changing.newPassword" name="newPassword"
+                                    [type]="hide ? 'password' : 'text'" required>
+                                <button mat-icon-button matSuffix (click)="hide = !hide"
+                                    [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+                                    <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+                                </button>
+                            </mat-form-field>
+                            <div><button (click)="changePassword()" class="change">Change Password</button></div>
+
+                        </div>
+
+                        <mat-expansion-panel-header>
+                            <mat-panel-title>
+                                Change Passport
+                            </mat-panel-title>
+                        </mat-expansion-panel-header>
+                    </mat-expansion-panel>
+                </mat-accordion>
+            </div>
+
+            <div class="flex column height-150px width-750px">
+                <mat-accordion class="example-headers-align " multi>
+                    <mat-expansion-panel>
+                        <mat-expansion-panel-header>
+                            <mat-panel-title>
+                                leave summary
+                            </mat-panel-title>
+                            <mat-panel-description>
+                                View summary of your leaves
+
+                            </mat-panel-description>
+
+                        </mat-expansion-panel-header>
+                        <canvas #pieChart></canvas>
+                    </mat-expansion-panel>
+
+                </mat-accordion>
+
+            </div>
+        </div>
+    </div>
+
+
+    <button class="btns" (click)="close()">Back</button>
+</div>

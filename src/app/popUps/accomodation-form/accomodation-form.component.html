@@ -1,0 +1,71 @@
+<div class="main-container flex center-center column message-bg border-double">
+    <h1 class="text-center">Please fill in the Accomodation Form</h1>
+    <form class="example-form flex center-center column padding-15px" #accomodationForm="ngForm">
+        <!-- full names -->
+        <mat-form-field class="example-full-width width-700px">
+            <mat-label>Full Names:</mat-label>
+            <input type="text" matInput placeholder="e.g kearabetswe john Maja" [(ngModel)]="accomodationData.fullNames"
+                #fullNames="ngModel" name="fullNames" required>
+            <mat-error *ngIf="fullNames.errors && fullNames.errors['required']">
+                this field is required
+            </mat-error>
+        </mat-form-field>
+        <!-- email -->
+        <mat-form-field class="example-full-width width-700px">
+            <mat-label>Email address:</mat-label>
+            <input type="text" matInput placeholder="e.g kea@gmail.com" [(ngModel)]="accomodationData.email"
+                #email="ngModel" name="email" required>
+            <mat-error *ngIf="email.errors && email.errors['required']">
+                this field is required
+            </mat-error>
+        </mat-form-field>
+        <!-- contact Number -->
+        <mat-form-field class="example-full-width width-700px">
+            <mat-label>Contact:</mat-label>
+            <input type="text" matInput placeholder="e.g supervisor" [(ngModel)]="accomodationData.contact"
+                #contact="ngModel" name="contact" required>
+            <mat-error *ngIf="contact.errors && contact.errors['required']">
+                this field is required
+            </mat-error>
+        </mat-form-field>
+
+        <!-- Guest House NAme -->
+
+        <mat-form-field class="example-full-width width-700px">
+            <mat-label>Guest house name</mat-label>
+            <input type="number" matInput placeholder="e.g 7 days" [(ngModel)]="accomodationData.accomodationName"
+                #accomodationName="ngModel" name="accomodationName" required>
+            <mat-error *ngIf="accomodationName.errors && accomodationName.errors['required']">
+                this field is required
+            </mat-error>
+        </mat-form-field>
+        <!-- Date -->
+        <div class="flex gap-1em ">
+            <mat-form-field class="example-full-width width-300px" appearance="fill" (click)="picker.open()">
+                <mat-label>preffered date of fix</mat-label>
+                <input matInput [matDatepicker]="picker" [(ngModel)]="accomodationData.fixDate" #fixDate="ngModel"
+                    name="fixDate" required>
+                <mat-datepicker #picker></mat-datepicker>
+            </mat-form-field>
+            <!-- =============problem==================== -->
+            <mat-form-field class="example-full-width width-300px">
+                <mat-label>Problom facing:</mat-label>
+                <input type="text" matInput [(ngModel)]="accomodationData.problem" #problem="ngModel" name="problem"
+                    required>
+                <mat-error *ngIf="problem.errors && problem.errors['required']">
+                    this field is required
+                </mat-error>
+            </mat-form-field>
+
+
+        </div>
+
+
+
+
+    </form>
+    <div class="flex gap-1em">
+        <button class="btns" (click)="close()">Back</button>
+        <button class="btns" (click)="submitAccomodation()" [disabled]="accomodationForm.invalid">Submit</button>
+    </div>
+</div>

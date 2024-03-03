@@ -1,0 +1,54 @@
+<div class="main-container flex center-center column full-height full-width message-bg border-double">
+    <h1>ALL Approved Leaves</h1>
+    <div *ngIf="tableData.length == 0"> <img src="../../../assets/pictures/No-data-found-banner.png" alt="No data"></div>
+    <div class="flex center-center width-80">
+
+        <mat-table [dataSource]="tableData"  class="mat-elevation-z8" *ngIf="tableData.length>0">
+            <!-- Implicit Column -->
+            <ng-container matColumnDef="$implicit" >
+                <th mat-header-cell *matHeaderCellDef> <h1 class="text-center">Employe Full Names: </h1></th>
+                <td mat-cell *matCellDef="let element" class="cursor" ><p class="text-center">{{element.fullNames}}</p> </td>
+            </ng-container>
+
+            <!-- Index Column -->
+            <ng-container matColumnDef="index">
+                <th mat-header-cell *matHeaderCellDef><h1 class="text-center"> Department: </h1></th>
+                <td mat-cell *matCellDef="let element    " class="cursor" ><p class="text-center"> {{element.department}} </p></td>
+            </ng-container>
+            
+            <!-- Position -->
+            <ng-container matColumnDef="edit">
+                <th mat-header-cell *matHeaderCellDef><h1 class="text-center" > Position: </h1></th>
+                <td mat-cell *matCellDef="let element " class="cursor" ><p class="text-center">{{element.position}}</p> </td>
+            </ng-container>
+
+            <!-- Number of days -->
+            <ng-container matColumnDef="numberOfDays">
+                <th mat-header-cell *matHeaderCellDef><h1 class="text-center" > Number of days: </h1></th>
+                <td mat-cell *matCellDef="let element " class="cursor" ><p class="text-center">{{element.daysNo}}</p> </td>
+            </ng-container>
+
+            <!-- leave status -->
+            <ng-container matColumnDef="leaveStatus">
+                <th mat-header-cell *matHeaderCellDef><h1 class="text-center" > Leave status </h1></th>
+                <td mat-cell *matCellDef="let element " class="cursor"><p class="text-center">{{element.status}}</p> </td>
+            </ng-container>
+
+            <ng-container matColumnDef="ApprovedBy" >
+                <th mat-header-cell *matHeaderCellDef><h1 class="text-center"> Approved by: </h1></th>
+                <td mat-cell *matCellDef="let element " class="cursor" ><p class="text-center">{{element.appeovedBy}}</p> </td>
+            </ng-container>
+
+
+
+            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+            <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+        </mat-table>
+    </div>
+
+    <div class="flex center-center gap-1em">
+        <button class="btn" (click)="close()">Back</button>
+    </div>
+
+</div>
+

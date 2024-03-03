@@ -1,0 +1,52 @@
+<div class="main-container full-height full-width flex center-center column">
+    <mat-toolbar class="spaceBetween-center opacity">
+        <div class="flex gap-1em"> <span class="material-symbols-outlined icon-larger">account_circle</span>
+            <h1>{{currentEmployee[0].firstName}} {{currentEmployee[0].lastName}}</h1>
+            <span class="material-symbols-outlined flex center-center cursor" matTooltip="Read messages" (click)="messages('readMe')" matBadge="{{myCount.length}}">mail</span>
+            <span class="material-symbols-outlined flex center-center cursor"  matTooltip="Send messages" (click)="messages('sendMe')">send</span>
+        </div>
+        <div class="width-700px flex center-center"><marquee ><img src="../../../assets/pictures/Afrika-Tikkun-Logo.webp" class="height-100px" alt="afrika"></marquee>
+            </div>
+        <div class="flex width-80px gap-1em center-center">
+            <span class="material-symbols-outlined flex center-center cursor notification-icon" matTooltip="yov've got {{leavesNotifications.length}} Leave request notifications & {{visaNotifications.length}} visa applications"  matBadge="{{allNoti}}" [class.animate]="notification">notifications</span>
+            <button class="log-out" (click)="home()">log out</button>
+        </div>
+        
+    </mat-toolbar>
+    <h1 class="text-center"><strong>WELCOME TO {{currentEmployee[0].firstName.toUpperCase()}}
+            {{currentEmployee[0].lastName.toUpperCase()}} DASHBOARD</strong></h1>
+
+    <div class="main-inner flex wrap center-center gap-1em">
+        <!-- ======================Approved Leaves========================= -->
+        <div class="card card2 flex center-center" (click)="showLeaves()">
+            <img class="full-height" src="../../../assets/pictures/outlook-out-of-office.png" alt="excel pic">
+            <h2>Approved Leaves</h2>
+        </div>
+        <!-- ======================Visa Applications===================== -->
+        <div class="card text-center flex center-center" (click)="ShowVisa()">
+            <img class="full-height" src="../../../assets/pictures/VISA-Logo-history.png" alt="VISA-Logo-history">
+            <h2>Visa Applications</h2>
+        </div>
+        <!-- ======================Leave requests===================== -->
+        <div class="card flex center-center gap-1em" (click)="LeavesRequest()">
+            <img class="full-height" src="../../../assets/pictures/files.png" alt="outlook-out-of-office">
+            <h2>Leave Requests</h2>
+        </div>
+
+        <!-- ======================Show profile========================= -->
+        <div class="card card2 flex center-center" (click)="showProfile()">
+            <img class="full-height" src="../../../assets/pictures/my-profile-icon-24.png" alt="excel pic">
+            <h2>My Profile</h2>
+        </div>
+        <!-- ======================HR POLICIES===================== -->
+        <div class="card card1 text-center flex center-center" (click)="ShowPolicy(policyDetails)"></div>
+        <!-- ======================Operations===================== -->
+        <div class="card flex center-center gap-1em" (click)="Operations()">
+            <img class="full-height" src="../../../assets/pictures/1697107160-accurate3.png"
+                alt="outlook-out-of-office">
+            <h2>Operations</h2>
+        </div>
+
+
+    </div>
+</div>

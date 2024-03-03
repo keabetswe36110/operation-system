@@ -1,1 +1,140 @@
 /* You can add global styles to this file, and also import other style files */
+
+// html, body { }
+body {
+    margin: 0;
+    font-family: Roboto, "Helvetica Neue", sans-serif;
+    // background-image: url(../src/assets/pictures/desk_items.jpg);
+    // background-size: cover;
+}
+
+// flex
+.flex {
+    display: flex;
+}
+
+.center-center {
+    justify-content: center !important;
+    align-items: center !important;
+}
+
+.wrap {
+    flex-wrap: wrap;
+}
+
+.column {
+    flex-direction: column;
+}
+
+.spaceBetween-center {
+    justify-content: space-between;
+    align-items: center;
+}
+
+// sizes
+.height-vh {
+    height: 100vh;
+}
+.height-100px{
+    height: 100px;
+}
+.message-bg {
+    background-image: url(./assets/pictures/peakpx.jpg) !important;
+    background-size: cover;
+}
+
+.full-width {
+    width: 100%;
+}
+
+.full-height {
+    height: 100%;
+}
+
+.half-width {
+    width: 50%;
+}
+
+.width-80 {
+    width: 80%;
+}
+
+.color-white {
+    color: #ffffff;
+    opacity: 100%;
+    text-shadow: 10 10 10 white;
+}
+
+.margin-0 {
+    margin: 0;
+}
+
+.gap-05em {
+    gap: 0.5em;
+}
+
+.gap-1em {
+    gap: 1em;
+}
+
+// fonts
+.text-center {
+    text-align: center;
+}
+
+.font-size {
+    font-size: 100px !important;
+}
+
+// border-radius
+.border-radius {
+    border-radius: 20px;
+}
+
+// cards
+.card {
+    width: 500px;
+    height: 210px;
+    background-color: rgba(0, 255, 255, 0.158);
+    border-radius: 20px;
+}
+
+.log-out {
+    width: 80px;
+    height: 25px;
+    background-color: darkorange;
+    border: none;
+    border-radius: 10px;
+}
+
+.cursor {
+    cursor: pointer;
+}
+
+.container {
+    height: 100vh !important;
+
+}
+
+.width-300px {
+    width: 300px;
+}
+.width-700px{
+    width: 970px;
+}
+
+.btn-bg {
+    background-color: rgb(48, 48, 58) !important;
+    border-radius: 6px;
+}
+
+.color-white {
+    color: #ffffff !important;
+}
+h1,h2,h3,h4,h5,h6{
+    color: black;
+}
+
+// .main-container{
+//     height: 100vh !important;
+// }

@@ -1,0 +1,36 @@
+<div class="main-container flex center-center column full-height full-width border-double message-bg">
+    <div *ngIf="dataaaa.length == 0"> <img src="../../../assets/pictures/No-data-found-banner.png" alt="No data"></div>
+    <h1>EMPLOYEE POLICIES</h1>
+    <div class="flex center-center width-80" *ngIf="dataaaa.length">
+
+        <mat-table [dataSource]="dataaaa"  class="mat-elevation-z8" >
+            <!-- Implicit Column -->
+            <ng-container matColumnDef="$implicit" >
+                <th mat-header-cell *matHeaderCellDef> <h1>Policy Name </h1></th>
+                <td mat-cell *matCellDef="let dataaaa" class="cursor" (click)="ShowPolicy(dataaaa)">{{dataaaa.title}} </td>
+            </ng-container>
+
+            <!-- Index Column -->
+            <ng-container matColumnDef="index">
+                <th mat-header-cell *matHeaderCellDef><h1> Policy Category </h1></th>
+                <td mat-cell *matCellDef="let dataaaa" class="cursor" (click)="ShowPolicy(dataaaa)"> {{dataaaa.category}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="form">
+                <th mat-header-cell *matHeaderCellDef><h1> Forms </h1></th>
+                <td mat-cell *matCellDef="let dataaaa" class="cursor link" (click)="leaveForm(dataaaa)"> +fill the form </td>
+            </ng-container>
+            
+
+
+
+            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+            <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+        </mat-table>
+    </div>
+
+    <div class="flex center-center gap-1em">
+        <button class="btn" (click)="close()">Back</button>
+    </div>
+
+</div>

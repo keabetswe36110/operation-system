@@ -1,0 +1,79 @@
+<div class="main-container flex center-center column full-height full-width message-bg border-double">
+    <h1>ALL Leaves</h1>
+    <div *ngIf="leavesData.length == 0"> <img src="../../../assets/pictures/No-data-found-banner.png" alt="No data">
+    </div>
+    <div class="flex center-center width-80" *ngIf="leavesData.length > 0">
+
+        <mat-table mat-table [dataSource]="leavesData" class="mat-elevation-z8">
+            <!-- Implicit Column -->
+            <ng-container matColumnDef="$implicit">
+                <th mat-header-cell *matHeaderCellDef>
+                    <h1 class="text-center">Employe Full Names: </h1>
+                </th>
+                <td mat-cell *matCellDef="let leavesData" class="cursor" (click)="showLeaves(leavesData)">
+                    <p class="text-center">{{leavesData.fullNames}}</p>
+                </td>
+            </ng-container>
+
+            <!-- Index Column -->
+            <ng-container matColumnDef="index">
+                <th mat-header-cell *matHeaderCellDef>
+                    <h1 class="text-center"> Department: </h1>
+                </th>
+                <td mat-cell *matCellDef="let leavesData    " class="cursor" (click)="showLeaves(leavesData)">
+                    <p class="text-center"> {{leavesData.department}} </p>
+                </td>
+            </ng-container>
+
+            <!-- Position -->
+            <ng-container matColumnDef="edit">
+                <th mat-header-cell *matHeaderCellDef>
+                    <h1 class="text-center"> Position: </h1>
+                </th>
+                <td mat-cell *matCellDef="let leavesData " class="cursor" (click)="showLeaves(leavesData)">
+                    <p class="text-center">{{leavesData.position}}</p>
+                </td>
+            </ng-container>
+
+            <!-- Number of days -->
+            <ng-container matColumnDef="numberOfDays">
+                <th mat-header-cell *matHeaderCellDef>
+                    <h1 class="text-center"> Number of days: </h1>
+                </th>
+                <td mat-cell *matCellDef="let leavesData " class="cursor">
+                    <p class="text-center">{{leavesData.daysNo}}</p>
+                </td>
+            </ng-container>
+
+            <!-- leave status -->
+            <ng-container matColumnDef="leaveStatus">
+                <th mat-header-cell *matHeaderCellDef>
+                    <h1 class="text-center"> Leave status </h1>
+                </th>
+                <td mat-cell *matCellDef="let leavesData " class="cursor">
+                    <p class="text-center" (click)="showLeaves(leavesData)" matTooltip="click to change status">
+                        {{leavesData.status}}</p>
+                </td>
+            </ng-container>
+
+            <!-- Action -->
+            <ng-container matColumnDef="Action">
+                <th mat-header-cell *matHeaderCellDef>
+                    <h1 class="text-center"> Action </h1>
+                </th>
+                <td mat-cell *matCellDef="let leavesData " class="cursor">
+                    <div class="flex center-center gap-05em"><button (click)="update(leavesData)">Approve</button><button>Decline</button></div>
+                </td>
+            </ng-container>
+
+
+            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+            <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+        </mat-table>
+    </div>
+
+    <div class="flex center-center gap-1em">
+        <button class="btn" (click)="close()">Back</button>
+    </div>
+
+</div>

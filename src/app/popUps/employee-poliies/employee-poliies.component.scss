@@ -1,0 +1,38 @@
+.btn{
+    margin-top: 15px;
+    width: 600px;
+    height: 40px;
+    border-radius: 12px;
+    background-color: blue;
+    color: white;
+    border: none;
+    margin: 10px 80px 10px 80px;
+}
+button:hover{
+    background-color: rgb(48, 48, 58);
+    color: white;
+}
+.main-container{
+    // background-color: rgb(145, 185, 185);
+    background-color: rgba(0, 255, 255, 0.158);
+
+}
+.icon-larger{
+    font-size: xx-large;
+}
+.log-out{
+    width: 80px;
+    height: 25px;
+    background-color: darkorange;
+    border: none;
+    border-radius: 10px;
+}
+.log-out:hover{
+    background-color: rgb(38, 38, 73);
+    color: white;
+}
+.link:hover{
+    color: white;
+    background-color: green;
+    border-radius: 12px;
+}

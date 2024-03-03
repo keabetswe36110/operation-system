@@ -1,0 +1,56 @@
+<div class="container flex center-center">
+    <div class="main-inner width-80 flex center-center border-radius">
+        <div class="left half-width full-height flex center-center column">
+            <h1 class="color-white margin-0 text-center">WELCOME TO AFRIKKA TIKKUN OPERATION's SYSTEM</h1>
+            <img class="log-height" src="../../../assets/pictures/Afrika-Tikkun-Logo.webp" alt="afrika">
+        </div>
+        <div class="right half-width full-height flex column center-center border-radius gap-05em">
+            <span class="material-symbols-outlined font-size">passkey</span>
+            <form class="example-form" #loginForm="ngForm">
+                <div class="input-bg margin-bottom">
+                    <div class="flex center-center input-bg">
+                        <span class="material-symbols-outlined">person</span>
+                        <mat-form-field class="example-full-width">
+                            <mat-label>Username:</mat-label>
+                            <input type="email" matInput placeholder="eg. pat@example.com"
+                                [(ngModel)]="loginFormData.email" #email="ngModel" name="email" required>
+                            <mat-error *ngIf="email.errors && email.invalid">
+                                Please enter a valid username
+                            </mat-error>
+                            <mat-error *ngIf="email.errors && email.errors['required']">
+                                username is <strong>required</strong>
+                            </mat-error>
+                        </mat-form-field><br>
+
+                    </div>
+
+                    <!-- password -->
+                    <div class="flex center-center input-bg">
+                        <span class="material-symbols-outlined">lock</span>
+                        <mat-form-field class="example-full-width">
+                            <mat-label>Password:</mat-label>
+                            <input type="password" matInput placeholder="******" [(ngModel)]="loginFormData.password"
+                                #password="ngModel" name="password" [required]="emailPattern"
+                                [type]="hide ? 'password' : 'text'">
+                            <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'"
+                                [attr.aria-pressed]="hide">
+                                <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+                            </button>
+                            <mat-error *ngIf="password.errors && password.errors['required']">
+                                Please fill this field
+                            </mat-error>
+                        </mat-form-field>
+                    </div>
+                </div>
+                <!-- username -->
+
+                <div class=" flex gap-1em">
+                    <button class="btn" (click)="loginForm.reset()">Cancel</button>
+                    <button class="btn" (click)="submit()" [disabled]="loginForm.invalid">Submit</button>
+                </div>
+
+            </form>
+        </div>
+    </div>
+
+</div>

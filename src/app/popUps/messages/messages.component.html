@@ -1,0 +1,74 @@
+<!-- ================send message DIV========= -->
+<div class="message-bg flex center-center column border-double padding" *ngIf="isRead">
+        <h3 class="color-white">Please type a message you wanna send</h3>
+        <mat-form-field class="example-full-width width-300px">
+            <mat-label>Type a message</mat-label>
+            <textarea matInput placeholder="Ex. It makes me feel..." [(ngModel)]="sendMessages.message" name="message" class="height"></textarea>
+        </mat-form-field>
+
+        <mat-form-field class="example-full-width width-300px">
+          <mat-label>Employee sendTo</mat-label>
+          <input type="text" matInput placeholder="e.g kea@gmail.com" [(ngModel)]="sendMessages.sendTo"
+              #sendTo="ngModel" name="sendTo" required >
+          <mat-error *ngIf="sendTo.errors && sendTo.errors['required']">
+              this field is required
+          </mat-error>
+      </mat-form-field>
+
+        <button mat-button color="primary" class="example-button-row color-white btn-bg" (click)="sendMessage()">Send</button>
+</div>
+<!-- -==============read message DIV ========== -->
+<div *ngIf="!isRead" class="message-bg padding border-double ">
+  <h2 class="text-center color-white">all My messages</h2>
+    <mat-form-field class="width-700px">
+        <mat-label>Filter</mat-label>
+        <input matInput (keyup)="applyFilter($event)" placeholder="Ex. ium" #input class="width-700">
+      </mat-form-field>
+      
+      <table mat-table [dataSource]="myMassages" class="mat-elevation-z8">
+      
+        <!-- Message id -->
+        <ng-container matColumnDef="position">
+          <th mat-header-cell *matHeaderCellDef> Sender email :</th>
+          <td mat-cell *matCellDef="let element"> {{element.messageId}} </td>
+        </ng-container>
+      
+        <!-- MessageName -->
+        <ng-container matColumnDef="name">
+          <th mat-header-cell *matHeaderCellDef> Message From: </th>
+          <td mat-cell *matCellDef="let element">{{element.messageName}} </td>
+        </ng-container>
+      
+        <!-- Message -->
+        <ng-container matColumnDef="weight">
+          <th mat-header-cell *matHeaderCellDef> message: </th>
+          <td mat-cell *matCellDef="let element"> {{element.message}} </td>
+        </ng-container>
+
+      <!-- ====reply button==== -->
+        <ng-container matColumnDef="reply">
+          <th mat-header-cell *matHeaderCellDef> Reply: </th>
+          <td mat-cell *matCellDef="let element"><button (click)="Change()">Reply</button></td>
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+      
+        <!-- Row shown when there is no matching data. -->
+        <tr class="mat-row" *matNoDataRow>
+          <td class="mat-cell" colspan="4">No data matching the filter "{{input.value}}"</td>
+        </tr>
+      </table>
+      <div class="flex center-center margin-top"><button mat-button (click)="close()" class="btn-bg color-white" >close</button></div>
+      
+
+</div>
+<!-- =================reply message DIv======== -->
+
+<div class="message-bg flex center-center column border-double" *ngIf="isReply">
+  <h3 class="color-white">Please type a message you wanna send</h3>
+  <mat-form-field class="example-full-width width-300px">
+      <mat-label>Type a message</mat-label>
+      <textarea matInput placeholder="Ex. It makes me feel..." [(ngModel)]="sendMessages.reply" name="reply" class="height "></textarea>
+  </mat-form-field>
+  <button mat-button color="primary" class="example-button-row color-white btn-bg" (click)="reply()">Send</button>

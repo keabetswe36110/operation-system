@@ -1,0 +1,48 @@
+.width-700px{
+    width: 500px;
+}
+.padding-15px{
+    padding: 15px;
+    box-sizing: border-box;
+}
+.btns{
+    width: 200px;
+    height: 30px;
+    border: none;
+    border-radius: 10px;
+    margin-bottom: 15px;
+    background-color: aquamarine;
+
+}
+button:hover{
+    background-color: rgb(14, 173, 120);
+    color: white;
+}
+.main-container{
+    overflow-y: auto !important;
+}
+.width-750px{
+    width: 350px;
+}
+.height-150px{
+    height: 100px;
+}
+.width-60{
+    width: 60%;
+}
+.width-25{
+    width: 25%;
+}
+.margin-top-15{
+    margin-top: 15px;
+}
+.change{
+    width: 150px;
+    height: 30px;
+    background-color: cadetblue;
+    border-radius: 6px;
+    border: none;
+}
+.gap-05em{
+    gap: 0.5em;
+}

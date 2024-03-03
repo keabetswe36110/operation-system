@@ -1,0 +1,66 @@
+<div class="main-container flex center-center column full-height full-width message-bg border-double">
+    <h1>ALL Guest House Services</h1>
+    <div *ngIf="accomodationData.length == 0"> <img src="../../../assets/pictures/No-data-found-banner.png" alt="No data"></div>
+    <div class="flex center-center width-80" *ngIf="accomodationData.length>0">
+
+        <mat-table [dataSource]="accomodationData" class="mat-elevation-z8">
+            <!-- full names -->
+            <ng-container matColumnDef="$implicit">
+                <th mat-header-cell *matHeaderCellDef>
+                    <h1 class="text-center">Employe Full Names: </h1>
+                </th>
+                <td mat-cell *matCellDef="let accomodationData" class="cursor">
+                    <p class="text-center">{{accomodationData.fullNames}}</p>
+                </td>
+            </ng-container>
+
+            <!-- email address -->
+            <ng-container matColumnDef="index">
+                <th mat-header-cell *matHeaderCellDef>
+                    <h1 class="text-center"> Email Address </h1>
+                </th>
+                <td mat-cell *matCellDef="let accomodationData    " class="cursor">
+                    <p class="text-center"> {{accomodationData.email}} </p>
+                </td>
+            </ng-container>
+
+            <!-- problem facing -->
+            <ng-container matColumnDef="edit">
+                <th mat-header-cell *matHeaderCellDef>
+                    <h1 class="text-center"> Problems: </h1>
+                </th>
+                <td mat-cell *matCellDef="let accomodationData " class="cursor">
+                    <p class="text-center">{{accomodationData.problem}}</p>
+                </td>
+            </ng-container>
+
+            <!-- date of fixing -->
+            <ng-container matColumnDef="numberOfDays">
+                <th mat-header-cell *matHeaderCellDef>
+                    <h1 class="text-center"> fixing data: </h1>
+                </th>
+                <td mat-cell *matCellDef="let accomodationData " class="cursor">
+                    <p class="text-center">{{accomodationData.fixDate}}</p>
+                </td>
+            </ng-container>
+            <!-- Guest house name -->
+            <ng-container matColumnDef="contact">
+                <th mat-header-cell *matHeaderCellDef>
+                    <h1 class="text-center"> Guest House Name </h1>
+                </th>
+                <td mat-cell *matCellDef="let accomodationData " class="cursor">
+                    <p class="text-center">{{accomodationData.accomodationName}}</p>
+                </td>
+            </ng-container>
+
+
+            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+            <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+        </mat-table>
+    </div>
+
+    <div class="flex center-center gap-1em">
+        <button class="btn" (click)="close()">Back</button>
+    </div>
+
+</div>

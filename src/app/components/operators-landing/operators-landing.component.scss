@@ -1,0 +1,52 @@
+.main-container {
+    // background-color: rgb(145, 185, 185);
+    // background-color: rgba(0, 255, 255, 0.158);
+    background-image: url(../../../assets/pictures/light-blue-abstract-background-with-circle_155083-329.avif);
+    background-size: cover;
+
+}
+
+.icon-larger {
+    font-size: xx-large;
+}
+
+.log-out {
+    width: 80px;
+    height: 25px;
+    background-color: darkorange;
+    border: none;
+    border-radius: 10px;
+}
+
+button:hover {
+    background-color: rgb(38, 38, 73);
+    color: white;
+}
+
+.opacity {
+    opacity: 75%;
+}
+
+.main-inner {
+
+    width: 85%;
+    height: 78%;
+}
+
+.card:hover {
+    opacity: 60%;
+    color: white;
+    cursor: pointer;
+}
+
+.card1 {
+    background-image: url(../../../assets/pictures/depositphotos_484434834-stock-photo-internet-business-technology-network-concept.jpg);
+    background-size: cover;
+}
+
+.span:hover {
+    color: blue;
+}
+.height-80{
+    height: 80%;
+}

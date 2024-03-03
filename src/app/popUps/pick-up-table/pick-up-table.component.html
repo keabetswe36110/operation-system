@@ -1,0 +1,78 @@
+<div class="main-container flex center-center column full-height full-width message-bg border-double">
+    <h1>ALL Pick-Ups</h1>
+    <div *ngIf="pickUpData.length == 0"> <img src="../../../assets/pictures/No-data-found-banner.png" alt="No data"></div>
+    <div class="flex center-center width-80" *ngIf="pickUpData.length > 0">
+
+        <mat-table [dataSource]="pickUpData" class="mat-elevation-z8">
+            <!-- Implicit Column -->
+            <ng-container matColumnDef="$implicit">
+                <th mat-header-cell *matHeaderCellDef>
+                    <h1 class="text-center">Employe Full Names: </h1>
+                </th>
+                <td mat-cell *matCellDef="let pickUpData" class="cursor">
+                    <p class="text-center">{{pickUpData.fullNames}}</p>
+                </td>
+            </ng-container>
+
+            <!-- Index Column -->
+            <ng-container matColumnDef="index">
+                <th mat-header-cell *matHeaderCellDef>
+                    <h1 class="text-center"> Pick-Up Point </h1>
+                </th>
+                <td mat-cell *matCellDef="let pickUpData    " class="cursor">
+                    <p class="text-center"> {{pickUpData.pickUpPoint}} </p>
+                </td>
+            </ng-container>
+
+            <!-- Position -->
+            <ng-container matColumnDef="edit">
+                <th mat-header-cell *matHeaderCellDef>
+                    <h1 class="text-center"> Pick-up Date: </h1>
+                </th>
+                <td mat-cell *matCellDef="let pickUpData " class="cursor">
+                    <p class="text-center">{{pickUpData.endDate.substring(0,10)}}</p>
+                </td>
+            </ng-container>
+
+            <!-- pick up time -->
+            <ng-container matColumnDef="numberOfDays">
+                <th mat-header-cell *matHeaderCellDef>
+                    <h1 class="text-center"> Pick-Up time: </h1>
+                </th>
+                <td mat-cell *matCellDef="let pickUpData " class="cursor">
+                    <p class="text-center">{{pickUpData.time}}</p>
+                </td>
+            </ng-container>
+
+            
+            <!-- pick up time -->
+            <ng-container matColumnDef="dropOff">
+                <th mat-header-cell *matHeaderCellDef>
+                    <h1 class="text-center"> Drop-off point: </h1>
+                </th>
+                <td mat-cell *matCellDef="let pickUpData " class="cursor">
+                    <p class="text-center">{{pickUpData.dropOff}}</p>
+                </td>
+            </ng-container>
+
+            <!-- Contacts -->
+            <ng-container matColumnDef="contact">
+                <th mat-header-cell *matHeaderCellDef>
+                    <h1 class="text-center"> Contacts: </h1>
+                </th>
+                <td mat-cell *matCellDef="let pickUpData " class="cursor">
+                    <p class="text-center">{{pickUpData.contact}}</p>
+                </td>
+            </ng-container>
+
+
+            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+            <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+        </mat-table>
+    </div>
+
+    <div class="flex center-center gap-1em">
+        <button class="btn" (click)="close()">Back</button>
+    </div>
+
+</div>

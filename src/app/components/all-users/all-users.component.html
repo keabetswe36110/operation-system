@@ -1,0 +1,67 @@
+<div class="main-container flex center-center column full-height full-width padding">
+  <h1>ALL Users</h1>
+  <!--------- filter ------------>
+  <mat-form-field class="full-width" *ngIf="data.length>0">
+    <mat-label>Filter</mat-label>
+    <input matInput (keyup)="applyFilter($event)" placeholder="Ex. ium" #input>
+  </mat-form-field>
+
+  <!-- table from mat material -->
+  <div > <img src="../../../assets/pictures/No-data-found-banner.png" alt="No data" *ngIf="data.length==0"></div>
+  <table mat-table [dataSource]="dataSource" class="mat-elevation-z8" onchange="refresh()" *ngIf="data.length>0">
+
+    <!-- Implicit Column -->
+    <ng-container matColumnDef="$implicit">
+      <th mat-header-cell *matHeaderCellDef> User ID </th>
+      <td mat-cell *matCellDef="let data"> {{data.userId}} </td>
+    </ng-container>
+
+    <!-- Index Column -->
+    <ng-container matColumnDef="index">
+      <th mat-header-cell *matHeaderCellDef> First Name </th>
+      <td mat-cell *matCellDef="let data"> {{data.firstName}} </td>
+    </ng-container>
+
+    <!-- Count Column -->
+    <ng-container matColumnDef="count">
+      <th mat-header-cell *matHeaderCellDef> Last Name </th>
+      <td mat-cell *matCellDef="let data"> {{data.lastName}} </td>
+    </ng-container>
+
+    <!-- First Column -->
+    <ng-container matColumnDef="first">
+      <th mat-header-cell *matHeaderCellDef> email </th>
+      <td mat-cell *matCellDef="let data"> {{data.email}} </td>
+    </ng-container>
+
+    <!-- Last Column -->
+    <ng-container matColumnDef="last">
+      <th mat-header-cell *matHeaderCellDef> Role </th>
+      <td mat-cell *matCellDef="let data"> {{data.role}} </td>
+    </ng-container>
+
+    <!-- Even Column -->
+    <ng-container matColumnDef="even">
+      <th mat-header-cell *matHeaderCellDef> Gender </th>
+      <td mat-cell *matCellDef="let data"> {{data.gender}} </td>
+    </ng-container>
+
+    <!-- Odd Column -->
+    <ng-container matColumnDef="odd">
+      <th mat-header-cell *matHeaderCellDef class="text-center"> Delete users </th>
+      <td mat-cell *matCellDef="let data"><span class="material-symbols-outlined flex center-center cursor" (click)="delete(data)" matTooltip="delete a user permanently" >delete</span></td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+
+  </table>
+  <mat-paginator [length]="1" [pageSize]="1" [pageSizeOptions]="[1]" aria-label="Select page" class="width-700px" *ngIf="data.length>0">
+  </mat-paginator>
+  <div class="flex gap-1em">
+    <button class="btn" routerLink="/admin-landing">Back</button>
+    <button class="btn" (click)="refresh()">Refresh</button>
+  </div>
+
+ 
+</div>

@@ -1,0 +1,86 @@
+<div class="main-container flex center-center column border-double message-bg">
+    <h1 class="text-center">Please fill in the leave Form</h1>
+    <form class="example-form flex center-center column padding-15px" #leaveForm="ngForm">
+        <!-- Title -->
+        <mat-form-field class="example-full-width width-700px">
+            <mat-label>Full Names:</mat-label>
+            <input type="text" [disabled]="showDisabled" matInput placeholder="e.g kearabetswe john Maja"
+                [(ngModel)]="leaveFormData.fullNames" #fullNames="ngModel" name="fullNames" required>
+
+        </mat-form-field>
+        <!-- content -->
+        <mat-form-field class="example-full-width width-700px">
+            <mat-label>department:</mat-label>
+            <input type="text" [disabled]="showDisabled" matInput placeholder="e.g Technology"
+                [(ngModel)]="leaveFormData.department" #department="ngModel" name="department" required>
+        </mat-form-field>
+        <!-- position -->
+        <div class="flex gap-1em ">
+            <mat-form-field class="example-full-width width-300px">
+                <mat-label>Employee Position</mat-label>
+                <input type="text" [disabled]="showDisabled" matInput placeholder="e.g supervisor"
+                    [(ngModel)]="leaveFormData.position" #position="ngModel" name="position" required>
+                <mat-error *ngIf="position.errors && position.errors['required']">
+                    this field is required
+                </mat-error>
+            </mat-form-field>
+
+            <!--==============Leave type========================== -->
+            <mat-form-field class="example-full-width width-300px">
+                <mat-label>Leave Type</mat-label>
+                <mat-select [(ngModel)]="leaveFormData.type" name="type" >
+                    <mat-option *ngFor="let category of leaveType" [value]="category">
+                        {{category}}
+                    </mat-option>
+                </mat-select>
+            </mat-form-field>
+
+        </div>
+        <!-- Date -->
+        <div class="flex gap-1em ">
+            <mat-form-field class="example-full-width width-300px" appearance="fill" (click)="picker.open()">
+                <mat-label>Choose start date</mat-label>
+                <input matInput [matDatepickerFilter]="myFilter" [matDatepicker]="picker" [min]="minDate"
+                    [(ngModel)]="leaveFormData.startDate" #startDate="ngModel" name="startDate" required
+                    [disabled]="showDisabled">
+                <mat-datepicker #picker></mat-datepicker>
+            </mat-form-field>
+            <!-- =============daysNo==================== -->
+            <mat-form-field class="example-full-width width-300px">
+                <mat-label>number of days:</mat-label>
+                <input type="number" matInput [(ngModel)]="leaveFormData.daysNo" #daysNo="ngModel" name="daysNo"
+                    required [disabled]="showDisabled">
+                <mat-error *ngIf="daysNo.errors && daysNo.errors['required']">
+                    this field is required
+                </mat-error>
+            </mat-form-field>
+
+        </div>
+        <!-- =============leave status============= -->
+        <mat-form-field class="example-full-width width-700px">
+            <mat-label>Leave status</mat-label>
+            <mat-select [(ngModel)]="leaveFormData.status" [(ngModel)]="leaveStatus[0]" name="status"   
+                [disabled]="!showDisabled">
+                <mat-option *ngFor="let cat of leaveStatus" [value]="cat">
+                    {{cat}}
+                </mat-option>
+            </mat-select>
+        </mat-form-field>
+
+        <!-- message -->
+        <!-- <div class="flex gap-1em " *ngIf="leaveFormData.status.toUpperCase() != 'PENDING || APPROVED'">
+            <mat-form-field class="example-full-width width-300px">
+                <mat-label>Reason for declining</mat-label>
+                <input type="text" matInput placeholder="e.g wa phapha"
+                    [(ngModel)]="leaveFormData.reason" #reason="ngModel" name="reason" required>
+                <mat-error *ngIf="reason.errors && reason.errors['required']">
+                    this field is required
+                </mat-error>
+            </mat-form-field></div> -->
+    </form>
+    <div class="flex gap-1em">
+        <button class="btns" (click)="close()">Back</button>
+        <button class="btns" [disabled]="leaveForm.invalid" (click)="isUpdate ? update() : submit()">{{isUpdate ?
+            'Update':'Submit'}}</button>
+    </div>
+</div>

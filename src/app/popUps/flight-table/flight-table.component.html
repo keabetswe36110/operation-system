@@ -1,0 +1,66 @@
+<div class="main-container flex center-center column full-height full-width message-bg border-double">
+    <div *ngIf="flightData.length == 0"> <img src="../../../assets/pictures/No-data-found-banner.png" alt="No data"></div>
+    <h1>ALL Flight information</h1>
+    <div class="flex center-center width-80" *ngIf="flightData.length>0">
+
+        <mat-table [dataSource]="flightData" class="mat-elevation-z8">
+            <!-- full names -->
+            <ng-container matColumnDef="$implicit">
+                <th mat-header-cell *matHeaderCellDef>
+                    <h1 class="text-center">Employe Full Names: </h1>
+                </th>
+                <td mat-cell *matCellDef="let flight" class="cursor">
+                    <p class="text-center">{{flight.fullNames}}</p>
+                </td>
+            </ng-container>
+
+            <!-- email address -->
+            <ng-container matColumnDef="index">
+                <th mat-header-cell *matHeaderCellDef>
+                    <h1 class="text-center"> email address </h1>
+                </th>
+                <td mat-cell *matCellDef="let flight    " class="cursor">
+                    <p class="text-center"> {{flight.email}} </p>
+                </td>
+            </ng-container>
+
+            <!-- travel date -->
+            <ng-container matColumnDef="edit">
+                <th mat-header-cell *matHeaderCellDef>
+                    <h1 class="text-center"> comfirmed travel date : </h1>
+                </th>
+                <td mat-cell *matCellDef="let flight " class="cursor">
+                    <p class="text-center">{{flight.endDate.substring(0,10)}}</p>
+                </td>
+            </ng-container>
+
+            <!-- Ticket No: -->
+            <ng-container matColumnDef="numberOfDays">
+                <th mat-header-cell *matHeaderCellDef>
+                    <h1 class="text-center"> Ticket NO: </h1>
+                </th>
+                <td mat-cell *matCellDef="let flight " class="cursor">
+                    <p class="text-center">{{flight.ticketNo}}</p>
+                </td>
+            </ng-container>
+            <!-- Number of days -->
+            <ng-container matColumnDef="contact">
+                <th mat-header-cell *matHeaderCellDef>
+                    <h1 class="text-center"> Contacts: </h1>
+                </th>
+                <td mat-cell *matCellDef="let flight " class="cursor">
+                    <p class="text-center">{{flight.contact}}</p>
+                </td>
+            </ng-container>
+
+
+            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+            <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+        </mat-table>
+    </div>
+
+    <div class="flex center-center gap-1em">
+        <button class="btn" (click)="close()">Back</button>
+    </div>
+
+</div>

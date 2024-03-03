@@ -1,0 +1,88 @@
+<div class="main-container flex center-center column message-bg border-double">
+    <h1 class="text-center">Please fill in the visa extension Form</h1>
+    <form class="example-form flex center-center column padding-15px" #visaForm="ngForm">
+        <div class="flex gap-1em ">
+            <!-- full names -->
+            <mat-form-field class="example-full-width width-300px">
+                <mat-label>Full Names:</mat-label>
+                <input type="text" matInput placeholder="e.g kearabetswe john Maja" [(ngModel)]="visaFormData.fullNames"
+                    #fullNames="ngModel" name="fullNames" required [disabled]="!isStatus">
+                <mat-error *ngIf="fullNames.errors && fullNames.errors['required']">
+                    this field is required
+                </mat-error>
+            </mat-form-field>
+            <!-- email -->
+            <mat-form-field class="example-full-width width-300px">
+                <mat-label>Email address:</mat-label>
+                <input type="text" matInput placeholder="e.g kea@gmail.com" [(ngModel)]="visaFormData.email"
+                    #email="ngModel" name="email" required [disabled]="!isStatus">
+                <mat-error *ngIf="email.errors && email.errors['required']">
+                    this field is required
+                </mat-error>
+            </mat-form-field>
+        </div>
+
+        <!-- contact Number -->
+        <mat-form-field class="example-full-width width-700px">
+            <mat-label>Contact:</mat-label>
+            <input type="text" matInput placeholder="e.g supervisor" [(ngModel)]="visaFormData.contact"
+                #contact="ngModel" name="contact" required [disabled]="!isStatus">
+            <mat-error *ngIf="contact.errors && contact.errors['required']">
+                this field is required
+            </mat-error>
+        </mat-form-field>
+
+        <!-- Passport number -->
+
+        <mat-form-field class="example-full-width width-700px">
+            <mat-label>Passport number</mat-label>
+            <input type="number" matInput placeholder="e.g 7 days" [(ngModel)]="visaFormData.PassportNo"
+                #PassportNo="ngModel" name="PassportNo" required [disabled]="!isStatus">
+            <mat-error *ngIf="PassportNo.errors && PassportNo.errors['required']">
+                this field is required
+            </mat-error>
+        </mat-form-field>
+        <!-- Date -->
+        <div class="flex gap-1em ">
+            <mat-form-field class="example-full-width width-300px" appearance="fill" (click)="picker.open()">
+                <mat-label>Date of expire</mat-label>
+                <input matInput [matDatepicker]="picker" [(ngModel)]="visaFormData.startDate" #startDate="ngModel"
+                    name="startDate" required [disabled]="!isStatus">
+                <mat-datepicker #picker></mat-datepicker>
+            </mat-form-field>
+
+            <mat-form-field class="example-full-width width-300px" appearance="fill" (click)="picker1.open()">
+                <mat-label>date of renewal</mat-label>
+                <input matInput [matDatepicker]="picker1" [(ngModel)]="visaFormData.endDate" #endDate="ngModel"
+                    name="endDate" required [disabled]="!isStatus">
+                <mat-datepicker #picker1></mat-datepicker>
+            </mat-form-field>
+
+        </div>
+
+
+        <!-- =============Reason==================== -->
+        <mat-form-field class="example-full-width width-700px">
+            <mat-label>Physical Address:</mat-label>
+            <input type="text" matInput [(ngModel)]="visaFormData.address" #address="ngModel" name="address" required [disabled]="!isStatus">
+            <mat-error *ngIf="address.errors && address.errors['required']">
+                this field is required
+            </mat-error>
+        </mat-form-field>
+        <!-- =============leave status============= -->
+        <mat-form-field class="example-full-width width-700px">
+            <mat-label>Leave status</mat-label>
+            <mat-select [(ngModel)]="visaFormData.status" name="status" [disabled]="isStatus">
+                <mat-option *ngFor="let cat of visaStatus" [value]="cat">
+                    {{cat}}
+                </mat-option>
+            </mat-select>
+        </mat-form-field>
+
+
+    </form>
+    <div class="flex gap-1em">
+        <button class="btns" (click)="close()">Back</button>
+        <button class="btns" (click)="submitVisa()" [disabled]="visaForm.invalid">Submit</button>
+    </div>
+</div>

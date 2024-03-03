@@ -1,0 +1,17 @@
+.main-container{
+    // background-color: rgba(0, 255, 255, 0.158);
+    background-image: url(../../../assets/pictures/light-blue-abstract-background-with-circle_155083-329.avif);
+    background-size: cover;
+
+}
+.log-out{
+    width: 80px;
+    height: 25px;
+    background-color: darkorange;
+    border: none;
+    border-radius: 10px;
+}
+.log-out:hover{
+    background-color: rgb(38, 38, 73);
+    color: white;
+}

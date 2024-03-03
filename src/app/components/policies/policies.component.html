@@ -1,0 +1,59 @@
+<div class="main-container flex center-center column full-height full-width">
+    <h1>HR POLICIES</h1>
+    <div *ngIf="dataaaa.length == 0"> <img src="../../../assets/pictures/No-data-found-banner.png" alt="No data"></div>
+    <div class="flex center-center width-80">
+        <table mat-table [dataSource]="dataaaa" class="mat-elevation-z8" *ngIf="dataaaa.length>0">
+            <!-- Implicit Column -->
+            <ng-container matColumnDef="Name">
+                <th mat-header-cell *matHeaderCellDef>
+                    <h1 class="text-center">Policy Name </h1>
+                </th>
+                <td mat-cell *matCellDef="let dataaaa" class="cursor" (click)="ShowPolicy(dataaaa)"
+                    matTooltip="see more info about the leave">
+                    <p class="text-center">{{dataaaa.title}}</p>
+                </td>
+            </ng-container>
+
+            <!-- Index Column -->
+            <ng-container matColumnDef="Category">
+                <th mat-header-cell *matHeaderCellDef>
+                    <h1 class="text-center"> Policy Category </h1>
+                </th>
+                <td mat-cell *matCellDef="let dataaaa" class="cursor" (click)="ShowPolicy(dataaaa)"
+                    matTooltip="see more info about the leave">
+                    <p class="text-center"> {{dataaaa.category}} </p>
+                </td>
+            </ng-container>
+
+            <!-- edit policy -->
+            <ng-container matColumnDef="edit">
+                <th mat-header-cell *matHeaderCellDef>
+                    <h1 class="text-center"> Edit Policies </h1>
+                </th>
+                <td mat-cell *matCellDef="let dataaaa" class="cursor " (click)="edit(dataaaa)">
+                    <p class="text-center"><span class="material-symbols-outlined flex center-center cursor" matTooltip="click to edit a policy" >edit</span></p>
+                </td>
+            </ng-container>
+            <!-- ========delte policy========= -->
+            <ng-container matColumnDef="delete">
+                <th mat-header-cell *matHeaderCellDef>
+                    <h1 class="text-center"> Delete Policies </h1>
+                </th>
+                <td mat-cell *matCellDef="let dataaaa" class="cursor" >
+                    <p class="text-center"><span class="material-symbols-outlined flex center-center cursor" (click)="delete(dataaaa)" matTooltip="delete a policy permanently" >delete</span></p>
+                </td>
+            </ng-container>
+
+
+
+            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+            <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+        </table>
+    </div>
+
+    <div class="flex center-center gap-1em">
+        <button class="btn" routerLink="/admin-landing">Back</button>
+        <button class="btn" (click)="AddPolicy()">Add Policy</button>
+    </div>
+
+</div>

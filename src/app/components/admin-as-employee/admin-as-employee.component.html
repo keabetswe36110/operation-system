@@ -1,0 +1,38 @@
+<div class="main-container full-height full-width flex center-center column">
+    <mat-toolbar class="spaceBetween-center opacity">
+        <div class="flex gap-1em"> <span class="material-symbols-outlined icon-larger">account_circle</span>
+            <h1>{{currentEmployee[0].firstName.toUpperCase()}}</h1>
+            <span class="material-symbols-outlined flex center-center cursor" matTooltip="Read messages" (click)="messages('readMe')" matBadge="{{myCount.length}}">mail</span>
+            <span class="material-symbols-outlined flex center-center cursor"  matTooltip="Send messages" (click)="messages('sendMe')">send</span>
+            
+        </div>
+        <div class="width-700px flex center-center"><marquee ><img src="../../../assets/pictures/Afrika-Tikkun-Logo.webp" class="height-100px" alt="afrika"></marquee></div>
+        <button class="log-out" (click)="home()">log out</button>
+    </mat-toolbar>
+    <h1 class="text-center"><strong>WELCOME TO EMPLOYEE DASHBOARD</strong></h1>
+
+    <div class="main-inner flex wrap center-center gap-1em">
+        <!-- ======================Add Users========================= -->
+        <div class="card card2 flex center-center" (click)="showProfile()">
+            <img class="full-height"
+                src="../../../assets/pictures/my-profile-icon-24.png"
+                alt="excel pic">
+            <h2>My Profile</h2>
+        </div>
+        <!-- ======================Policies===================== -->
+        <div class="card card1 text-center flex center-center" (click)="ShowPolicy(policyDetails)"></div>
+        <!-- ======================Switch Users===================== -->
+        <div class="card flex center-center gap-1em" (click)="switchUsers()">
+            <img class="full-height" src="../../../assets/pictures/social-media.png" alt="social-media">
+            <h2>Switch Users</h2>
+        </div>
+        <!-- ======================Aproved leaves===================== -->
+        <div class="card flex center-center gap-1em" (click)="Operations()">
+            <img class="full-height" src="../../../assets/pictures/1697107160-accurate3.png"
+                alt="outlook-out-of-office">
+            <h2>Operations</h2>
+        </div>
+
+        
+    </div>
+</div>

@@ -1,0 +1,97 @@
+<div class="main-container flex center-center column message-bg border-double">
+    <h1 class="text-center">Please fill in the Travel Form</h1>
+    <form class="example-form flex center-center column padding-15px" #travelForm="ngForm">
+        <div class="flex gap-1em">
+            <!-- full names -->
+            <mat-form-field class="example-full-width width-300px">
+                <mat-label>Full Names:</mat-label>
+                <input type="text" matInput placeholder="e.g kearabetswe john Maja"
+                    [(ngModel)]="travelFormData.fullNames" #fullNames="ngModel" name="fullNames" required>
+                <mat-error *ngIf="fullNames.errors && fullNames.errors['required']">
+                    this field is required
+                </mat-error>
+            </mat-form-field>
+            <!-- email -->
+            <mat-form-field class="example-full-width width-300px">
+                <mat-label>Email address:</mat-label>
+                <input type="text" matInput placeholder="e.g kea@gmail.com" [(ngModel)]="travelFormData.email"
+                    #email="ngModel" name="email" required>
+                <mat-error *ngIf="email.errors && email.errors['required']">
+                    this field is required
+                </mat-error>
+            </mat-form-field>
+        </div>
+        <div class="flex gap-1em">
+            <!-- contact Number -->
+            <mat-form-field class="example-full-width width-300px">
+                <mat-label>Contact:</mat-label>
+                <input type="text" matInput placeholder="e.g supervisor" [(ngModel)]="travelFormData.contact"
+                    #contact="ngModel" name="contact" required>
+                <mat-error *ngIf="contact.errors && contact.errors['required']">
+                    this field is required
+                </mat-error>
+            </mat-form-field>
+
+            <!-- Country -->
+            <mat-form-field class="example-full-width width-300px">
+                <mat-label>Country Traveling:</mat-label>
+                <input type="text" matInput placeholder="e.g south africa" [(ngModel)]="travelFormData.country"
+                    #country="ngModel" name="country" required>
+                <mat-error *ngIf="country.errors && country.errors['required']">
+                    this field is required
+                </mat-error>
+            </mat-form-field>
+        </div>
+
+
+        <!-- Passport number -->
+
+        <mat-form-field class="example-full-width width-700px">
+            <mat-label>Passport number</mat-label>
+            <input type="number" matInput placeholder="e.g 7 days" [(ngModel)]="travelFormData.PassportNo"
+                #PassportNo="ngModel" name="PassportNo" required>
+            <mat-error *ngIf="PassportNo.errors && PassportNo.errors['required']">
+                this field is required
+            </mat-error>
+        </mat-form-field>
+        <!-- Date -->
+        <div class="flex gap-1em ">
+            <mat-form-field class="example-full-width width-300px" appearance="fill" (click)="picker.open()">
+                <mat-label>Confirmed travel Date</mat-label>
+                <input matInput [matDatepicker]="picker" [(ngModel)]="travelFormData.startDate" #startDate="ngModel"
+                    name="startDate" required>
+                <mat-datepicker #picker></mat-datepicker>
+            </mat-form-field>
+
+            <mat-form-field class="example-full-width width-300px" appearance="fill" (click)="picker1.open()">
+                <mat-label>Confirmed return date</mat-label>
+                <input matInput [matDatepicker]="picker1" [(ngModel)]="travelFormData.endDate" #endDate="ngModel"
+                    name="endDate" required>
+                <mat-datepicker #picker1></mat-datepicker>
+            </mat-form-field>
+
+        </div>
+
+
+        <!-- =============DEPARTMENT==================== -->
+        <mat-form-field class="example-full-width width-700px">
+            <mat-label>Department:</mat-label>
+            <input type="text" matInput [(ngModel)]="travelFormData.department" #department="ngModel" name="department" required>
+            <mat-error *ngIf="department.errors && department.errors['required']">
+                this field is required
+            </mat-error>
+        </mat-form-field>
+
+        <mat-form-field class="example-full-width width-700px">
+            <mat-label>Role:</mat-label>
+            <input type="text" matInput [(ngModel)]="travelFormData.role" #role="ngModel" name="role" required>
+            <mat-error *ngIf="role.errors && role.errors['required']">
+                this field is required
+            </mat-error>
+        </mat-form-field>
+    </form>
+    <div class="flex gap-1em">
+        <button class="btns" (click)="close()">Back</button>
+        <button class="btns" (click)="submitTravelForm()" [disabled]="travelForm.invalid">Submit</button>
+    </div>
+</div>

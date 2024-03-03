@@ -1,0 +1,29 @@
+.example-button-row {
+    display: table-cell;
+    max-width: 600px;
+  }
+  .height{
+    height: 150px !important;
+    width: 300px !important;
+  }
+  .send{
+    height: 400px;
+  }
+.width-700px{
+  width: 700px;
+}
+.message-bg{
+  background-image: url(../../../assets/pictures/peakpx.jpg) !important;
+  background-size: cover;
+}
+.padding{
+  padding: 15px;
+}
+.margin-top{
+  margin-top: 10px;
+}
+
+.btn-bg:hover{
+  background-color: palegreen !important;
+  color: green !important;
+}
